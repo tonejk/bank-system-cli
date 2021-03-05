@@ -1,4 +1,4 @@
-# INFO
+# Info
 
 - Bank Application which uses command line interface. 
 
