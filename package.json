@@ -1,5 +1,5 @@
 {
-  "name": "h3_toni_suutari",
+  "name": "bank-system-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,5 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "readline-sync": "^1.4.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tonejk/bank-system-cli.git"
   }
 }
