@@ -82,21 +82,26 @@ const createAccount = () => {
 // does_account_exist
 const doesAccountExist = () => {
     console.log('Checking if an account exists!');
-    let checkID = readline.questionInt('Enter the account ID whose existence you want to verify.' + '\n');
+    
+    let checkID = checkUserID('does_account_exist');
+    
     for (let i=0; i < all_users.length; i++) {
         if(all_users[i].id === checkID) {
             console.log('This account exists.');
         } 
     }
+    
     console.log('An account with that ID does not exist. Try again.');
 }
 
 // account_balance
 const accountBalance = () => {
+    
     console.log('Checking your account balance!');
+    
     while(true) {
-        let checkID = readline.questionInt('What is your account ID?' + '\n');
-        let checkPWD = readline.question('Insert your password.' + '\n');
+        let checkID = checkUserID('account_balance');
+        let checkPWD = checkUserPassword();
 
         let id = all_users.find(user => user.id === checkID);
         let password = all_users.find(user => user.password === checkPWD);
@@ -118,10 +123,12 @@ const accountBalance = () => {
 
 // change_name
 const changeName = () => {
+    
     console.log('Changing the name associated with your account!');
+    
     while(true) {
-        let checkID = readline.questionInt('What is your account ID?' + '\n');
-        let checkPWD = readline.question('Insert your password.' + '\n');
+        let checkID = checkUserID('change_name');
+        let checkPWD = checkUserPassword();
 
         let id = all_users.find(user => user.id === checkID);
         let password = all_users.find(user => user.password === checkPWD);
@@ -147,10 +154,12 @@ const changeName = () => {
 
 // withdraw_funds
 const withdrawFunds = () => {
+    
     console.log('Withdrawing cash!');
+    
     while(true) {
-        let checkID = readline.questionInt('What is your account ID?' + '\n');
-        let checkPWD = readline.question('Insert your password.' + '\n');
+        let checkID = checkUserID('withdraw_funds');
+        let checkPWD = checkUserPassword();
 
         let id = all_users.find(user => user.id === checkID);
         let password = all_users.find(user => user.password === checkPWD);
@@ -181,10 +190,12 @@ const withdrawFunds = () => {
 
 // deposit_funds
 const depositFunds = () => {
+    
     console.log('Withdrawing cash!');
+    
     while(true) {
-        let checkID = readline.questionInt('What is your account ID?' + '\n');
-        let checkPWD = readline.question('Insert your password.' + '\n');
+        let checkID = checkUserID('deposit_funds');
+        let checkPWD = checkUserPassword();
 
         let id = all_users.find(user => user.id === checkID);
         let password = all_users.find(user => user.password === checkPWD);
@@ -214,10 +225,12 @@ const depositFunds = () => {
 
 // transfer_funds
 const transferFunds = () => {
+    
     console.log('Transferring funds!');
+    
     while(true) {
-        let checkID = readline.questionInt('What is your account ID?' + '\n');
-        let checkPWD = readline.question('Insert your password.' + '\n');
+        let checkID = checkUserID('transfer_funds');
+        let checkPWD = checkUserPassword();
 
         let id = all_users.find(user => user.id === checkID);
         let password = all_users.find(user => user.password === checkPWD);
@@ -253,10 +266,12 @@ const transferFunds = () => {
 
 // request_funds
 const requestFunds = () => {
+    
     console.log('Requesting funds!');
+    
     while(true) {
-        let checkID = readline.questionInt('What is your account ID?' + '\n');
-        let checkPWD = readline.question('Insert your password.' + '\n');
+        let checkID = checkUserID('request_funds');
+        let checkPWD = checkUserPassword();
 
         let id = all_users.find(user => user.id === checkID);
         let password = all_users.find(user => user.password === checkPWD);
@@ -288,10 +303,12 @@ const requestFunds = () => {
 
 // fund_requests
 const fundRequests = () => {
+    
     console.log('Requesting funds!');
+    
     while(true) {
-        let checkID = readline.questionInt('What is your account ID?' + '\n');
-        let checkPWD = readline.question('Insert your password.' + '\n');
+        let checkID = checkUserID('fund_requests');
+        let checkPWD = checkUserPassword();
 
         let id = all_users.find(user => user.id === checkID);
         let password = all_users.find(user => user.password === checkPWD);
@@ -317,10 +334,12 @@ const fundRequests = () => {
 
 // accept_fund_request
 const acceptFundRequest = () => {
+    
     console.log('Accepting fund requests!');
+    
     while(true) {
-        let checkID = readline.questionInt('What is your account ID?' + '\n');
-        let checkPWD = readline.question('Insert your password.' + '\n');
+        let checkID = checkUserID('accept_fund_request');
+        let checkPWD = checkUserPassword();
 
         let id = all_users.find(user => user.id === checkID);
         let password = all_users.find(user => user.password === checkPWD);
@@ -364,8 +383,10 @@ const acceptFundRequest = () => {
 
 // Main App
 const app = () => {
+    
     console.log('Welcome to Buutti banking CLI!');
     console.log('Hint: You can get help with the commands by typing "help".');
+    
     while(true) {
         let command = readline.question('Give me an answer: ');
         switch(command){
@@ -410,6 +431,33 @@ const app = () => {
         }
     }
 }
+
+// Helper functions
+/**
+ * Check user id
+ * 
+ * @param {string} command Command to do
+ * 
+ * @return int
+ */
+function checkUserID (command) {
+
+    let text = 'What is your account ID?';
+
+    switch (command)
+    {
+        case 'does_account_exist':
+            text = 'Enter the account ID whose existence you want to verify.';
+            break;
+    }
+
+    return readline.questionInt(text + '\n');
+}
+
+function checkUserPassword () {
+    return readline.question('Insert your password.' + '\n');
+}
+
 
 // Start program
 app();
