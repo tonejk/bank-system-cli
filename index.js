@@ -402,7 +402,7 @@ const app = () => {
                 break;
             case 'quit':
                 console.log('Program closed. Bye!')
-                return process.exit(1);
+                return process.exit(0);
             case 'create_account':
                 createAccount();
                 break;
